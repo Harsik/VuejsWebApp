@@ -52,6 +52,8 @@ export default {
       login(loginRequest)
         .then(response => {
           localStorage.accessToken = response.accessToken
+          this.$emit('sendAuthentication', true)
+          this.$router.push('/InspireView')
         })
     }
   }

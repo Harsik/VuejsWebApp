@@ -38,3 +38,19 @@ export function signup (signupRequest) {
     body: JSON.stringify(signupRequest)
   })
 }
+
+export function loadProfile (email) {
+  return request({
+    url: API_BASE_URL + '/account/profile?email=' + email,
+    method: 'GET'
+  })
+}
+
+export function editProfile (signupRequest) {
+  return request({
+    url: API_BASE_URL + '/account/profile/edit',
+    method: 'POST',
+    body: JSON.stringify(signupRequest)
+  })
+}
+

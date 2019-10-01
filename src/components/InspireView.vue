@@ -18,6 +18,8 @@
 </script>
 <style scoped>
   img {
+    width: 10%;
+    height: 10%;
     margin-left: auto;
     margin-right: auto;
     display: block;
