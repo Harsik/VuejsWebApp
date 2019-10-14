@@ -6,6 +6,7 @@ import Login from '../components/Login'
 import Signup from '../components/Signup'
 import Logout from '../components/Logout'
 import Profile from '../components/Profile'
+import FileList from '../components/FileList'
 
 Vue.use(VueRouter)
 export default new VueRouter({
@@ -17,8 +18,8 @@ export default new VueRouter({
 			component: HelloWorld
 		},
 		{
-			path: '/InspireView',
-			name: 'InspireView',
+			path: '/Inspire',
+			name: 'Inspire',
 			component: InspireView
 		},
 		{
@@ -40,6 +41,11 @@ export default new VueRouter({
 			path: '/Profile',
 			name: 'Profile',
 			component: Profile
+		},
+		{
+			path: '/FileList',
+			name: 'FileList',
+			component: FileList
 		},
 		{
 			path: '*',
