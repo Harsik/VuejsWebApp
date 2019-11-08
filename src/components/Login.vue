@@ -1,24 +1,22 @@
 <template>
   <v-form>
     <v-container>
-      <v-row>
-        <v-col cols="12" md="4">
-          <v-text-field v-model="email" :rules="emailRules" label="E-mail" required></v-text-field>
-        </v-col>
-
-        <v-col cols="12" md="4">
-          <v-text-field
-            v-model="password"
-            :rules="passwordRules"
-            :counter="8"
-            type="password"
-            label="Password"
-            required
-          ></v-text-field>
-        </v-col>
-
-        <v-col cols="12" md="4">
-          <v-btn @click="onLogin">Login</v-btn>
+      <v-row justify="center">
+        <v-col xs="12" sm="6" md="6">
+          <v-card class="pa-3">
+            <v-subheader>Login</v-subheader>
+            <v-divider :inset="false"></v-divider>
+            <v-text-field v-model="email" :rules="emailRules" label="E-mail" required></v-text-field>
+            <v-text-field
+              v-model="password"
+              :rules="passwordRules"
+              :counter="8"
+              type="password"
+              label="Password"
+              required
+            ></v-text-field>
+            <v-btn @click="onLogin">Login</v-btn>
+          </v-card>
         </v-col>
       </v-row>
     </v-container>
@@ -53,7 +51,7 @@ export default {
         .then(response => {
           localStorage.accessToken = response.accessToken
           this.$emit('sendAuthentication', true)
-          this.$router.push('/InspireView')
+          this.$router.push('/Inspire')
         })
     }
   }

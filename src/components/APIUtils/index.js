@@ -101,3 +101,25 @@ export function loadFiles() {
 		method: 'POST'
 	})
 }
+export function downloadFile(fileName) {
+	return formRequest({
+		url: API_BASE_URL + '/file/downloadFile/' + fileName,
+		method: 'GET'
+	})
+}
+
+export function loadAvatar (email) {
+  return request({
+    url: API_BASE_URL + '/file/loadAvatar?email=' + email,
+    method: 'GET'
+  })
+}
+
+export function uploadAvatar (formData) {
+  return formRequest({
+    url: API_BASE_URL + '/file/uploadAvatar',
+    method: 'POST',
+    body: formData
+  })
+}
+

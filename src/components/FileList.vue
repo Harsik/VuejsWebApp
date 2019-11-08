@@ -16,14 +16,16 @@
           ></v-text-field>
         </v-card-title>
         <v-data-table
+          v-model="selected"
           :headers="headers"
           :items="files"
           :search="search"
+          show-select
           item-key="name"
           class="elevation-1"
         >
           <!-- <v-progress-linear v-slot:progress color="blue" indeterminate></v-progress-linear> -->
-          <template v-slot:items="props">
+          <!-- <template v-slot:items="props">
             <td>
               <v-checkbox v-model="props.selected" primary hide-details></v-checkbox>
             </td>
@@ -31,11 +33,11 @@
             <td>{{ props.item.downloadUri }}</td>
             <td>{{ props.item.type }}</td>
             <td>{{ props.item.size }}</td>
-            <td>{{ props.item.updatedAt }}</td>
+            <td>{{ props.item.updatedAt }}</td> -->
             <!-- <td class="align-center justify-start layout px-0">
               <v-icon small @click="onDeleteFile(props.item.name)">delete</v-icon>
             </td> -->
-          </template>
+          <!-- </template> -->
         </v-data-table>
         <v-btn raised class="primary" @click="onPickFile">Upload</v-btn>
         <input
@@ -47,17 +49,17 @@
           multiple
           required
         >
-        <!-- <v-btn raised class="primary" @click="onDownloadFiles" :disabled="isDownloading">Download</v-btn> -->
+        <v-btn raised class="primary" @click="onDownloadFiles" :disabled="isDownloading">Download</v-btn>
         <!-- <v-btn raised class="primary" @click="openDownloadFolder">Folder</v-btn> -->
         <!-- <v-progress-circular v-if="isDownloading" transition="fade-transition" indeterminate></v-progress-circular> -->
       </v-card>
     </v-flex>
-    {{files}}
   </v-layout>
 </template>
 
 <script>
 import { uploadFile, uploadFiles, loadFiles } from './APIUtils'
+let download = require('downloadjs');
 // import { deleteFile, uploadFile, uploadFiles, loadFiles } from './APIUtils'
 // import { ipcRenderer, shell } from 'electron'
 
@@ -94,18 +96,13 @@ export default {
     // openDownloadFolder () {
     //   shell.showItemInFolder('C:/Users/Achivsoft/Downloads/*')
     // },
-    // onDownloadFiles () {
-    //   for (let value of this.selected) {
-    //     this.isDownloading = true
-    //     const fileName = value.name
-    //     let url = 'http://localhost:8080/api/file/downloadFile/' + fileName
-    //     let dir = 'C:/Users/Achivsoft/Downloads'
-    //     ipcRenderer.send('download', {
-    //       url: url,
-    //       properties: { directory: dir, filename: fileName }
-    //     })
-    //   }
-    // },
+    onDownloadFiles () {
+      for (let value of this.selected) {
+          /* eslint-disable no-console */
+          console.log(value)
+          download(value.downloadUri);
+      }
+    },
     // onDeleteFile (fileName) {
     //   deleteFile(fileName)
     //     .then(response => {

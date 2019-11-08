@@ -49,7 +49,7 @@ export default {
   name: 'App',
   data: () => ({
     drawer: false,
-    isAuthenticated: false,
+    isAuthenticated: true,
     subMenus: [
       { title: 'Profile', to: '/profile' },
       { title: 'Logout', to: '/logout' }
